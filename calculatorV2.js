@@ -18,12 +18,29 @@ function getNumber(e){
 document.addEventListener("keydown", getKeyNumber);
 
 function getKeyNumber(e){
-    console.log(e.keyCode);
     const key = document.querySelector(`[data-key="${e.keyCode}"]`)
-    console.log(key.innerText);
+    
+    if (e.keyCode == "190"){
+        let num = calcDisplay.innerText
+        if (num.indexOf(".") != -1) {return}
+    }
     calcDisplay.innerText += key.innerText;
   }
 
 function add(num1, num2){
   return num1 + num2;
+}
+
+const buttonClear = document.querySelector(".clear");
+window.addEventListener("keydown", keyClear);
+buttonClear.addEventListener("click", clickClear)
+
+function keyClear(e){
+  if (e.keyCode == "27"){
+    calcDisplay.innerText ="";
+  }
+}
+
+function clickClear(){
+    calcDisplay.innerText ="";
 }
