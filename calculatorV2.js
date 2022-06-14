@@ -74,5 +74,14 @@ function clickClear(){
     calcDisplay.innerText ="";
 }
 
-//removes number from display
-
+// backspace last character from display
+window.addEventListener("keydown", deleteDisplayChar);
+function deleteDisplayChar(e) {
+    if (calcDisplay.innerText =="") {return}
+    if (e.keyCode == 8) {
+      console.log("remove one char")
+      let myString = calcDisplay.innerText;
+      let myPart = myString.slice(0, (myString.length-1));
+      calcDisplay.innerText = myPart;
+    }
+  }
