@@ -5,11 +5,10 @@ let calcDisplay = document.querySelector(".calcDisplay");
 const nodeList= document.querySelectorAll(".numbers button");
 
 for (let i=0; i < nodeList.length; i++) {
-  nodeList[i].addEventListener("click", getNumber); 
+  nodeList[i].addEventListener("click", getClickNumber); 
 }
 
-function getNumber(e){
-  console.trace();
+function getClickNumber(e){
   console.log(e.target.textContent);
   calcDisplay.textContent += e.target.textContent;
 };
@@ -56,6 +55,8 @@ function getClickDecimal(){
 }
 
 
+
+
 function add(num1, num2){
   return num1 + num2;
 }
@@ -85,3 +86,46 @@ function deleteDisplayChar(e) {
       calcDisplay.innerText = myPart;
     }
   }
+
+document.addEventListener("keydown", getMultOperator)
+
+function getMultOperator(e) {
+if (e.shiftKey)
+    {
+    console.log("pressed shift")
+    if (e.keyCode == "56"){
+        console.log("pressed mult")
+    }
+    }
+    else {return}
+}
+
+function stopNumberEntry() {
+    document.removeEventListener("keydown", getKeyNumber);
+  
+    for (let i=0; i < nodeList.length; i++) {
+      nodeList[i].removeEventListener("click", getClickNumber); 
+    }
+}
+
+
+// operators
+for (let i=0; i < operatorsList.length; i++) {
+    operatorsList[i].addEventListener("click", storeOperand); 
+  }
+  
+// function storeOperand (){
+// console.log("the operand was: " + operand1)
+// if (!operand1){
+//     console.log("store operand1")    
+//     operand1 = calcDisplay.innerText;
+// }
+// console.log("the operand is now: " + operand1)
+// }
+
+const operator1 = document.querySelector(".operator1");
+
+const operand1 = document.querySelector(".operand1");
+const operatorsList= document.querySelectorAll(".operators button");
+
+
